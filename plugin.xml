@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-nfc-launcher-android" version="1.0.0">
+  <name>NFC</name>
+  <description>Cordova NFC application activity launcher plugin for Android</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova, nfc, android</keywords>
+  <engines>
+      <engine name="cordova" version=">=12.0.0" />
+  </engines>
+  
+  <platform name="android">
+
+    <!-- This will create the launch intent by mime type of your choice. -->
+    <preference name="MIME_TYPE" default="text/plain" />
+    <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application/activity">
+      <intent-filter>
+          <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <data android:mimeType="$MIME_TYPE" />
+      </intent-filter>
+    </config-file>
+    
+  </platform>
+</plugin>
